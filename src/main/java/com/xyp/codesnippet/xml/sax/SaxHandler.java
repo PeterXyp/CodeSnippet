@@ -1,4 +1,4 @@
-package com.xyp.codesnippet.xml;
+package com.xyp.codesnippet.xml.sax;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -18,30 +18,29 @@ public class SaxHandler extends DefaultHandler {
 
     @Override
     public void endDocument() throws SAXException {
-        System.out.println("end parse document");
+        System.out.println("\nend parse document");
         super.endDocument();
     }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-//        System.out.println("uri:"+uri+" localName:"+localName+" qName:"+qName);
-        System.out.println("qName:"+qName);
-        if(attributes != null){
-            for (int i = 0; i < attributes.getLength(); i++) {
-                System.out.println("attrName:" + attributes.getQName(i) + " attrValue:" + attributes.getValue(i));
-            }
+        System.out.print("<" + qName);
+        for (int i = 0; i < attributes.getLength(); i++) {
+            System.out.print(" " + attributes.getQName(i) + "=\"" + attributes.getValue(i) + "\"");
         }
+        System.out.print(">");
         super.startElement(uri, localName, qName, attributes);
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
+        System.out.print("</" + qName + ">");
         super.endElement(uri, localName, qName);
     }
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
+        System.out.print(new String(ch, start, length));
         super.characters(ch, start, length);
     }
-    
 }

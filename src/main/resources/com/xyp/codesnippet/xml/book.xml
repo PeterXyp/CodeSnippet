@@ -8,4 +8,8 @@
       <title>Learning XML</title>
       <author>Erik T. Ray</author>
    </book>
+   <book id="003">
+      <title>Learning XML</title>
+      <author><![CDATA[<a>Erik</a> T. Ray]]></author>
+   </book>
 </books> 
