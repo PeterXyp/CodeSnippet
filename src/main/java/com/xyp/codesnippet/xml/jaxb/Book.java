@@ -21,12 +21,12 @@ public class Book {
     private String title;
     
     @XmlElement(required = true)
-    private String author;
+    private Author author;
 
     public Book() {
     }
 
-    public Book(String id, String title, String author) {
+    public Book(String id, String title, Author author) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -40,7 +40,7 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
@@ -52,7 +52,7 @@ public class Book {
         this.title = title;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 

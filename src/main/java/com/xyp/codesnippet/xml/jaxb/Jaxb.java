@@ -27,7 +27,7 @@ public class Jaxb {
      */
     public static void individualBookProcess() {
         try {
-            Book book = new Book("001", "Harry Potter", "J K. Rowling");
+            Book book = new Book("001", "Harry Potter", new Author());
             StringWriter sw = new StringWriter();
 
             JAXBContext jaxbContext = JAXBContext.newInstance(Book.class);
@@ -50,26 +50,26 @@ public class Jaxb {
      * repeated book elements
      */
     public static void multiBooksProcess() {
-        Book book1 = new Book("001", "Harry Potter", "J K. Rowling");
-        Book book2 = new Book("002", "Harry Potter", "J K. Rowling");
-        List<Book> books = new ArrayList();
-        books.add(book1);
-        books.add(book2);
-        BookStore bookStore = new BookStore(2, books);
-
-
-        try {
-            StringWriter sw = new StringWriter();
-            JAXBContext jaxbContext = JAXBContext.newInstance(BookStore.class);
-            Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.marshal(bookStore, sw);
-            System.out.println(sw.toString());
-
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            BookStore unmarshal = (BookStore) unmarshaller.unmarshal(new StringReader(sw.toString()));
-            System.out.println(unmarshal);
-        } catch (JAXBException ex) {
-            Logger.getLogger(Jaxb.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        Book book1 = new Book("001", "Harry Potter", "J K. Rowling");
+//        Book book2 = new Book("002", "Harry Potter", "J K. Rowling");
+//        List<Book> books = new ArrayList();
+//        books.add(book1);
+//        books.add(book2);
+//        BookStore bookStore = new BookStore(2, books);
+//
+//
+//        try {
+//            StringWriter sw = new StringWriter();
+//            JAXBContext jaxbContext = JAXBContext.newInstance(BookStore.class);
+//            Marshaller marshaller = jaxbContext.createMarshaller();
+//            marshaller.marshal(bookStore, sw);
+//            System.out.println(sw.toString());
+//
+//            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+//            BookStore unmarshal = (BookStore) unmarshaller.unmarshal(new StringReader(sw.toString()));
+//            System.out.println(unmarshal);
+//        } catch (JAXBException ex) {
+//            Logger.getLogger(Jaxb.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }
